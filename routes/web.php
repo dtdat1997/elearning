@@ -15,8 +15,9 @@ Route::group(['middleware' => 'localization', 'prefix' => Session::get('locale')
 
     Route::get('/', 'HomeController@home');
     Route::get('/course', 'HomeController@course');
+    Route::get('/detail', 'HomeController@detail');
     Route::get('/discussion', 'HomeController@discussion');
-
+    
     Route::post('/lang', [
         'as' => 'switchLang',
         'uses' => 'LangController@postLang',

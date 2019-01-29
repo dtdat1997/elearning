@@ -8,7 +8,7 @@ class HomeController extends Controller
 {
     /**
      * Create a new controller instance.
-     *
+     * 
      * @return void
      */
 
@@ -20,6 +20,11 @@ class HomeController extends Controller
     public function course()
     {
         return view('homepages.course');
+    }
+
+    public function detail()
+    {
+        return view('homepages.detail_course');
     }
 
     public function discussion()
