@@ -22,6 +22,11 @@ class HomeController extends Controller
         return view('homepages.course');
     }
 
+    public function detail()
+    {
+        return view('homepages.detail_course');
+    }
+
     public function discussion()
     {
         return view('homepages.discussion');

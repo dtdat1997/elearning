@@ -72,7 +72,7 @@
         <div class="header search-featured-courses"><h5>{{ Lang::get('label.featured') }} {{ Lang::get('label.course') }}</h5></div>
         <div class="row course-content">
             @foreach (range(0, 8) as $number)       
-            <a href="#">
+            <a href="/detail">
             <div class="course-child" id="{{ $number }}">
                 <div class="img-wrapper"><img src="{!! Config::get('social.img.url') !!}/foundations_of_happiness_at_work-318210.jpg"></div>
                 <div class="banner"><span>VERIFIED</span></div>
