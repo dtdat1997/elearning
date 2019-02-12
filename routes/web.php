@@ -13,6 +13,32 @@
 
 Route::group(['middleware' => 'localization', 'prefix' => Session::get('locale')], function() {
 
+    Route::get('/exams', 'HomeController@index')->name('home');
+	Route::post('/exams','ExamsController@create')->name('createExam');
+
+	//Do exam
+	Route::get('/exams/{id?}','ExamsController@show');
+
+	//Save exam
+	Route::post('/save/{id?}','ExamsController@saveExam');
+
+	//Finish exam
+	Route::get('/finish/{id?}','ExamsController@mark');
+
+	//Suggest question
+	Route::get('/suggest', 'SuggestsController@index')->name('showSug');
+	Route::get('/suggest/new','SuggestsController@newSuggest');
+	Route::post('/suggest/new', 'SuggestsController@suggestQues');
+	Route::get('/suggest/remove/{id?}','SuggestsController@deleteSug');
+
+	//Auth
+	Auth::routes();
+	Route::get('users/register', 'Auth\RegisterController@showRegistrationForm');
+	Route::post('users/register', 'Auth\RegisterController@register');
+	Route::get('users/logout', 'Auth\LoginController@logout');
+	Route::get('users/login', 'Auth\LoginController@showLoginForm')->name('login');
+	Route::post('users/login', 'Auth\LoginController@login');
+
     Route::get('/', 'HomeController@home');
     Route::get('/course', 'HomeController@course');
     Route::get('/detail', 'HomeController@detail');
@@ -23,6 +49,7 @@ Route::group(['middleware' => 'localization', 'prefix' => Session::get('locale')
         'uses' => 'LangController@postLang',
     ]);
 });
+<<<<<<< HEAD
 Route::get('admin/login', [
   'as' => 'login',
   'uses' => 'Auth\LoginController@showLoginForm'
@@ -31,11 +58,25 @@ Route::post('admin/login', [
   'as' => '',
   'uses' => 'Auth\LoginController@login'
 ]);
-Route::group(['prefix' => 'admin'], function() {
-	Route::get('logout', [
-	  'as' => 'logout',
-	  'uses' => 'Auth\LoginController@logout'
+=======
+
+	Route::get('admin/login', [
+		'as' => 'login',
+		'uses' => 'Auth\LoginController@showLoginForm'
 	]);
+
+	Route::post('admin/login', [
+		'as' => '',
+		'uses' => 'Auth\LoginController@login'
+	]);
+
+>>>>>>> 8138dfe... View exam
+Route::group(['prefix' => 'admin'], function() {
+		Route::get('logout', [
+		'as' => 'logout',
+		'uses' => 'Auth\LoginController@logout'
+	]);
+
 	Route::group(['prefix' => 'category'], function() {
 		Route::get('/{name}', [
 		  'as' => 'categoryIndex',
